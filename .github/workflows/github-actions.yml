@@ -2,7 +2,8 @@ name: Daily Job
 
 on:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "0 9 * * *"    # Runs daily at 10:00 AM UTC
+  workflow_dispatch:       # Enables manual run from GitHub UI
 
 jobs:
   run-daily-script:
