@@ -46,7 +46,10 @@ const getRandomItems = (array, count) => {
     return shuffled.slice(0, count);
 }
 
-pt.launch().then(async (browser) => {
+const isCI = process.env.CI === 'true';
+pt.launch({
+    args: isCI ? ['--no-sandbox', '--disable-setuid-sandbox'] : []
+  }).then(async (browser) => {
     const page = await browser.newPage();
 
     await page.goto('https://www.chorvatsko.cz/', { waitUntil: 'domcontentloaded' });
